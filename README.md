@@ -2,7 +2,7 @@
 
 *A visual, interactive simulator that demonstrates how account-takeover (ATO) risk engines work under different protection levels.*
 
-<img src="simulator.png" width="100%" />
+<img src="docs/simulator.png" width="100%" />
 
 ---
 
