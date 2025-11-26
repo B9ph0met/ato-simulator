@@ -1,306 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<title>Enhanced ATO Login Simulator</title>
-<style>
+  <meta charset="UTF-8" />
+  <title>Enhanced ATO Login Simulator</title>
+  <style>
     body {
-        margin: 0;
-        padding: 40px;
-        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-        background: #f3f4f6;
-        color: #111827;
-    }
-    .container {
-        max-width: 1600px;
-        margin: auto;
-        background: white;
-        border-radius: 18px;
-        padding: 40px;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      margin: 0;
+      padding: 40px;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      background: #f3f4f6;
+      color: #111827;
     }
     h1 {
-        font-size: 42px;
-        margin-bottom: 35px;
-        font-weight: 700;
-        color: #0f172a;
+      font-size: 42px;
+      margin-bottom: 35px;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .container {
+      max-width: 1600px;
+      margin: auto;
+      background: white;
+      border-radius: 18px;
+      padding: 40px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     }
     .row {
-        display: flex;
-        gap: 25px;
-        margin-bottom: 20px;
-        flex-wrap: wrap;
+      display: flex;
+      gap: 25px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
     }
     .field {
-        flex: 1;
-        min-width: 200px;
-        display: flex;
-        flex-direction: column;
+      flex: 1;
+      min-width: 200px;
+      display: flex;
+      flex-direction: column;
     }
     label {
-        font-size: 14px;
-        font-weight: 600;
-        margin-bottom: 6px;
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 6px;
     }
     input, select {
-        padding: 12px;
-        border: 1px solid #d1d5db;
-        border-radius: 8px;
-        font-size: 16px;
-        outline: none;
+      padding: 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 16px;
+      outline: none;
     }
     input:focus, select:focus {
-        border-color: #2563eb;
+      border-color: #2563eb;
     }
     .primary-btn {
-        background: #2563eb;
-        border: none;
-        color: white;
-        padding: 14px 26px;
-        border-radius: 10px;
-        font-size: 18px;
-        cursor: pointer;
-        margin-top: 24px;
-        transition: 0.2s;
+      background: #2563eb;
+      border: none;
+      color: white;
+      padding: 14px 26px;
+      border-radius: 10px;
+      font-size: 18px;
+      cursor: pointer;
+      margin-top: 24px;
+      transition: 0.2s;
+      white-space: nowrap;
     }
     .primary-btn:hover {
-        background: #1d4ed8;
+      background: #1d4ed8;
     }
     .response-box {
-        background: #0d1117;
-        color: #00ff6a;
-        padding: 25px;
-        font-family: monospace;
-        white-space: pre;
-        border-radius: 12px;
-        margin-top: 20px;
-        font-size: 16px;
-        overflow-x: auto;
+      background: #0d1117;
+      color: #00ff6a;
+      padding: 25px;
+      font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      white-space: pre;
+      border-radius: 12px;
+      margin-top: 20px;
+      font-size: 16px;
+      overflow-x: auto;
+      min-height: 120px;
     }
     .hint {
-        font-size: 13px;
-        color: #6b7280;
-        margin-top: 4px;
+      font-size: 13px;
+      color: #6b7280;
+      margin-top: 4px;
     }
-</style>
+  </style>
 </head>
 
 <body>
-<h1>Enhanced ATO Login Simulator</h1>
+  <h1>Enhanced ATO Login Simulator</h1>
 
-<div class="container">
+  <div class="container">
 
     <!-- INPUT GROUP 1 -->
     <div class="row">
-        <div class="field">
-            <label>Username</label>
-            <input id="username" value="test" />
-        </div>
+      <div class="field">
+        <label>Username</label>
+        <input id="username" value="test" />
+      </div>
 
-        <div class="field">
-            <label>Password</label>
-            <input id="password" value="test123" />
-        </div>
+      <div class="field">
+        <label>Password</label>
+        <input id="password" value="test123" />
+      </div>
 
-        <div class="field">
-            <label>Country (IP)</label>
-            <select id="country">
-                <option value="1.1.1.1">🇺🇸 United States</option>
-                <option value="5.5.5.5" selected>🇫🇷 France (EU)</option>
-                <option value="123.123.123.123">🇨🇳 China</option>
-            </select>
-        </div>
+      <div class="field">
+        <label>Country (IP)</label>
+        <select id="country">
+          <option value="1.1.1.1">🇺🇸 United States</option>
+          <option value="5.5.5.5" selected>🇫🇷 France (EU)</option>
+          <option value="123.123.123.123">🇨🇳 China</option>
+        </select>
+      </div>
 
-        <div class="field">
-            <label>Device</label>
-            <select id="devicePicker">
-                <option value="dev-1">Known device</option>
-                <option value="dev-new">New device</option>
-                <option value="bot-ua">Bot-like device</option>
-            </select>
-        </div>
+      <div class="field">
+        <label>Device</label>
+        <select id="devicePicker">
+          <option value="dev-1">Known device</option>
+          <option value="dev-new">New device</option>
+          <option value="bot-ua">Bot-like device</option>
+        </select>
+      </div>
 
-        <div class="field">
-            <label>Scenario</label>
-            <select id="scenario">
-                <option value="normal">Normal login</option>
-                <option value="impossible">Impossible travel</option>
-                <option value="spray">Password spray (x5)</option>
-                <option value="stuffing">Credential stuffing (x5)</option>
-            </select>
-        </div>
+      <div class="field">
+        <label>Scenario</label>
+        <select id="scenario">
+          <option value="normal">Normal login</option>
+          <option value="impossible">Impossible travel</option>
+          <option value="spray">Password spray (x5)</option>
+          <option value="stuffing">Credential stuffing (x5)</option>
+        </select>
+      </div>
     </div>
 
     <!-- INPUT GROUP 2 -->
     <div class="row">
+      <div class="field" style="max-width:150px;">
+        <label>IP</label>
+        <input id="ip" value="5.5.5.5" />
+      </div>
 
-        <div class="field" style="max-width:150px;">
-            <label>IP</label>
-            <input id="ip" value="5.5.5.5" />
-        </div>
+      <div class="field" style="max-width:160px;">
+        <label>Device ID</label>
+        <input id="deviceId" value="dev-1" />
+      </div>
 
-        <div class="field" style="max-width:160px;">
-            <label>Device ID</label>
-            <input id="deviceId" value="dev-1" />
-        </div>
+      <div class="field" style="max-width:220px;">
+        <label>&nbsp;</label>
+        <label style="display:flex;align-items:center;gap:6px;font-size:14px;color:#374151;">
+          <input type="checkbox" id="rotateIp" style="width:auto;margin:0;" />
+          Rotate IP per attempt
+        </label>
+        <div class="hint">Simulates proxy/residential rotation</div>
+      </div>
 
-        <div class="field" style="max-width:200px;">
-            <label>&nbsp;</label>
-            <label style="display:flex;align-items:center;gap:6px;font-size:14px;color:#374151;">
-                <input type="checkbox" id="rotateIp" style="width:auto;margin:0;" />
-                Rotate IP per attempt
-            </label>
-            <div class="hint">Simulates proxy/residential rotation</div>
+      <div class="field">
+        <label>Protection level</label>
+        <div style="display:flex;align-items:center;gap:10px;">
+          <span id="protectionLabel">Level 5</span>
+          <input type="range" id="protectionLevel" min="0" max="5" value="5" oninput="updateProtectionUI()" />
         </div>
+        <div class="hint" id="protectionHint">Full risk engine: all heuristics + scoring.</div>
+      </div>
 
-        <div class="field">
-            <label>Protection level</label>
-            <div style="display:flex;align-items:center;gap:10px;">
-                <span id="protectionLabel">Level 5</span>
-                <input type="range" id="protectionLevel" min="0" max="5" value="5" oninput="updateProtectionUI()" />
-            </div>
-            <div class="hint" id="protectionHint">Full risk engine: all heuristics + scoring.</div>
-        </div>
-
-        <div class="field" style="flex:0 0 auto;">
-            <label>&nbsp;</label>
-            <button class="primary-btn" onclick="run()">Run</button>
-        </div>
+      <div class="field" style="flex:0 0 auto;">
+        <label>&nbsp;</label>
+        <button class="primary-btn" onclick="run()">Run</button>
+      </div>
     </div>
 
     <!-- USER AGENT -->
     <div class="row">
-        <div class="field" style="flex:1;">
-            <label>User-Agent</label>
-            <input id="userAgent" value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36" />
-        </div>
+      <div class="field" style="flex:1;">
+        <label>User-Agent</label>
+        <input
+          id="userAgent"
+          value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36"
+        />
+      </div>
     </div>
 
     <!-- OUTPUT -->
     <div id="response" class="response-box">{}</div>
+  </div>
 
-</div>
+  <!---------------------------- SCRIPT LOGIC ---------------------------->
+  <script>
+    // ---- Protection Level UI ----
+    function updateProtectionUI() {
+      const lvl = Number(document.getElementById("protectionLevel").value);
+      document.getElementById("protectionLabel").innerText = `Level ${lvl}`;
 
-
-<!---------------------------- SCRIPT LOGIC ---------------------------->
-<script>
-
-// ---- Protection Level UI ----
-function updateProtectionUI() {
-    const lvl = Number(document.getElementById("protectionLevel").value);
-    document.getElementById("protectionLabel").innerText = `Level ${lvl}`;
-
-    const text = [
+      const text = [
         "No protection — raw login only.",
         "Basic checks — username exists / password.",
         "IP reputation + basic device check.",
         "Geo heuristics, new device alerts.",
         "Scoring engine enabled (risk-based decisions).",
         "Full risk engine: all heuristics + scoring."
-    ];
+      ];
 
-    document.getElementById("protectionHint").innerText = text[lvl];
-}
-
-// ---- Rotate IP Helper ----
-function isRotateIpEnabled() {
-    return document.getElementById("rotateIp").checked;
-}
-
-function rotateIpOnce() {
-    const ipInput = document.getElementById("ip");
-    let value = ipInput.value || "1.1.1.1";
-    const parts = value.split(".");
-
-    if (parts.length !== 4) {
-        ipInput.value = `${1 + Math.floor(Math.random()*223)}.${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}.${Math.floor(Math.random()*255)}`;
-        return;
+      document.getElementById("protectionHint").innerText = text[lvl];
     }
 
-    let last = parseInt(parts[3], 10) || 1;
-    last = (last + 1) % 254;
-    if (last === 0) last = 1;
+    // Initialize hint on load
+    window.addEventListener("load", updateProtectionUI);
 
-    parts[3] = last.toString();
-    ipInput.value = parts.join(".");
-}
+    // ---- Rotate IP Helper ----
+    function isRotateIpEnabled() {
+      return document.getElementById("rotateIp").checked;
+    }
 
-async function submitLogin() {
-  const payload = {
-    username: document.getElementById("username").value,
-    password: document.getElementById("password").value,
-    ip: document.getElementById("ip").value,
-    deviceId: document.getElementById("deviceId").value,
-    userAgent: document.getElementById("userAgent").value,
-    protectionLevel: Number(document.getElementById("protectionLevel").value)
-  };
+    function rotateIpOnce() {
+      const ipInput = document.getElementById("ip");
+      let value = ipInput.value || "1.1.1.1";
+      const parts = value.split(".");
 
-  try {
-    const res = await fetch("/api/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    });
+      if (parts.length !== 4) {
+        ipInput.value =
+          `${1 + Math.floor(Math.random() * 223)}.` +
+          `${Math.floor(Math.random() * 255)}.` +
+          `${Math.floor(Math.random() * 255)}.` +
+          `${Math.floor(Math.random() * 255)}`;
+        return;
+      }
 
-    const json = await res.json();
-    document.getElementById("response").innerText =
-      JSON.stringify(json, null, 2);
-  } catch (err) {
-    document.getElementById("response").innerText =
-      "❌ Error talking to backend:\n" + err;
-    console.error(err);
-  }
-}
+      let last = parseInt(parts[3], 10) || 1;
+      last = (last + 1) % 254;
+      if (last === 0) last = 1;
 
+      parts[3] = last.toString();
+      ipInput.value = parts.join(".");
+    }
 
+    // ---- Core submit ----
+    async function submitLogin() {
+      const payload = {
+        username: document.getElementById("username").value,
+        password: document.getElementById("password").value,
+        ip: document.getElementById("ip").value,
+        deviceId: document.getElementById("deviceId").value,
+        userAgent: document.getElementById("userAgent").value,
+        protectionLevel: Number(document.getElementById("protectionLevel").value)
+      };
 
-// ---- Scenarios ----
-async function scenarioImpossible() {
-    // First login: US
-    document.getElementById("country").value = "1.1.1.1";
-    document.getElementById("ip").value = "1.1.1.1";
-    await submitLogin();
+      try {
+        // IMPORTANT: relative URL so it works from http://localhost:3001
+        const res = await fetch("/api/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload)
+        });
 
-    setTimeout(async () => {
+        const json = await res.json();
+        document.getElementById("response").innerText = JSON.stringify(json, null, 2);
+      } catch (err) {
+        document.getElementById("response").innerText =
+          "❌ Error talking to backend:\n" + err;
+        console.error(err);
+      }
+    }
+
+    // ---- Scenarios ----
+    async function scenarioImpossible() {
+      // First login: US
+      document.getElementById("country").value = "1.1.1.1";
+      document.getElementById("ip").value = "1.1.1.1";
+      await submitLogin();
+
+      // Then login from France shortly after
+      setTimeout(async () => {
         document.getElementById("country").value = "5.5.5.5";
         document.getElementById("ip").value = "5.5.5.5";
         await submitLogin();
-    }, 500);
-}
+      }, 500);
+    }
 
-async function scenarioPasswordSpray() {
-    for (let i = 0; i < 5; i++) {
+    async function scenarioPasswordSpray() {
+      for (let i = 0; i < 5; i++) {
         document.getElementById("password").value = "pw" + i;
-
         if (isRotateIpEnabled()) rotateIpOnce();
-
         await submitLogin();
+      }
     }
-}
 
-async function scenarioCredentialStuffing() {
-    for (let i = 0; i < 5; i++) {
+    async function scenarioCredentialStuffing() {
+      for (let i = 0; i < 5; i++) {
         document.getElementById("password").value = "wrong" + i;
-
         if (isRotateIpEnabled()) rotateIpOnce();
-
         await submitLogin();
+      }
     }
-}
 
-// ---- Run Dispatcher ----
-async function run() {
-    const scenario = document.getElementById("scenario").value;
+    // ---- Run Dispatcher ----
+    async function run() {
+      const scenario = document.getElementById("scenario").value;
 
-    switch (scenario) {
-        case "normal": return submitLogin();
-        case "impossible": return scenarioImpossible();
-        case "spray": return scenarioPasswordSpray();
-        case "stuffing": return scenarioCredentialStuffing();
+      switch (scenario) {
+        case "normal":
+          return submitLogin();
+        case "impossible":
+          return scenarioImpossible();
+        case "spray":
+          return scenarioPasswordSpray();
+        case "stuffing":
+          return scenarioCredentialStuffing();
+      }
     }
-}
-
-</script>
-
+  </script>
 </body>
 </html>
