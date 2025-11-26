@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Login Events Dashboard</title>
+  <style>
+    body { font-family: Arial; margin: 20px; }
+    h1 { font-size: 32px; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    th, td { padding: 10px; border-bottom: 1px solid #ddd; }
+    .decision-ALLOW { color: green; font-weight: bold; }
+    .decision-MFA_REQUIRED { color: orange; font-weight: bold; }
+    .decision-CAPTCHA { color: #c78100; font-weight: bold; }
+    .decision-DENY { color: red; font-weight: bold; }
+    #clearBtn {
+      background: red; color: white; padding: 10px 20px;
+      border: none; border-radius: 4px; cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>ATO Login Events Dashboard</h1>
+
+  <button id="clearBtn">Clear Log</button>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Time</th>
+        <th>Username</th>
+        <th>IP</th>
+        <th>Device</th>
+        <th>Score</th>
+        <th>Decision</th>
+        <th>Success</th>
+        <th>Reasons</th>
+      </tr>
+    </thead>
+    <tbody id="eventsTable"></tbody>
+  </table>
+
+<script>
+async function loadEvents() {
+  const res = await fetch("http://localhost:3001/api/logins");
+  const events = await res.json();
+
+  const table = document.getElementById("eventsTable");
+  table.innerHTML = "";
+
+  events.forEach(e => {
+    const row = document.createElement("tr");
+
+    row.innerHTML = `
+      <td>${new Date(e.timestamp).toLocaleString()}</td>
+      <td>${e.username}</td>
+      <td>${e.ip}</td>
+      <td>${e.deviceId}</td>
+      <td>${e.score}</td>
+      <td class="decision-${e.decision}">${e.decision}</td>
+      <td style="font-weight:bold; color:${e.success ? 'green' : 'red'};">
+  ${e.success}
+</td>
+      <td>${e.reasons.join(", ")}</td>
+    `;
+
+    table.appendChild(row);
+  });
+}
+
+document.getElementById("clearBtn").onclick = async () => {
+  await fetch("http://localhost:3001/api/logins/clear", { method: "POST" });
+  loadEvents();
+};
+
+loadEvents();
+setInterval(loadEvents, 1500);
+</script>
+
+</body>
+</html>
